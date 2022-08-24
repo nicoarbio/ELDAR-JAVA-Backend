@@ -24,14 +24,16 @@ public abstract class CreditCard implements Comparable<CreditCard>{
 	 * @param expirationDate
 	 */
 	public CreditCard(String number, String cardholder, LocalDate expirationDate) {
+		if(number.equals(null) || number.trim().equals(""))
+			throw new IllegalArgumentException("Credit Card number cannot be null or be empty.");
+		if(cardholder.equals(null) || cardholder.trim().equals(""))
+			throw new IllegalArgumentException("Credit Card cardholder cannot be null or be empty.");
+		if(expirationDate.equals(null))
+			throw new IllegalArgumentException("Credit Card expiration date cannot be null.");
+		
 		this.number = number;
 		this.cardholder = cardholder;
 		this.expirationDate = expirationDate;
-		
-		
-		//if number or cardholder are empty or null
-		//if exp date is null		
-		//throw new IllegalArgumentException();
 	}
 	
 	public abstract String getBrand();
